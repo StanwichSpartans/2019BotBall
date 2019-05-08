@@ -1,10 +1,20 @@
 #include <kipr/botball.h>
 /**
+
+Motors and More
+
 Port 0 = Left Motor
 Port 1 = Right Motor
+Port 2 = Arm, Up and Down
 
-Port 0 = Open and Close Servo
-Port 1 = Up and Down Servo
+Servos and Stuff
+
+Port 0 = Claw, Open and Close
+Port 1 = Arm, Left and Right
+1024 is straight, higher turns left, lower turns right
+Port 2 = Claw, Rotate
+
+
 **/
 
 
@@ -53,8 +63,23 @@ void TurnLeft(float degrees)
     
 }
 
-int main()
+void ClawUp()
 {
 
+    motor(2, -50);
+    msleep(1000);
+    
+}
+
+
+int main()
+{
+    enable_servos();
+    set_servo_position(1, 100)
+    ClawUp();
+    ForwardWTime(75, 10000);
+    servo(1, 100);
+    
+    printf("Hello World\n");
     return 0;
 }
